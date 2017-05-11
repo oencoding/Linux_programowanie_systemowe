@@ -12,5 +12,5 @@
 
 int main(int argc, char* argv[])
 {
-    printf("Listener created with code %d\n", create_listener(1060, 5));
+    create_listener(1060, 5);
 }

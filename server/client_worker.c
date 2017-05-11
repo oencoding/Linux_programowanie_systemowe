@@ -6,13 +6,13 @@
 
 static void * client_worker(void *arg)
 {
-    printf("Client thread finished with code %d", 0);    
+    printf("Client thread finished\n", 0);    
     return NULL;
 }
 
 void service_client(int fd)
 {
-    printf("Servicing client with fd = %d", 0);
+    printf("Servicing client with fd = %d\n", fd);
     pthread_t thread;
     pthread_attr_t attr;
     int s = pthread_attr_init(&attr);

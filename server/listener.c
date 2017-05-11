@@ -30,22 +30,30 @@ int create_listener(int port, int max_clients)
 		perror("setsockopt  error");
 		return EXIT_CANNOT_CONFIGURE;
 	}
-	// if (ioctl(server_fd, FIONBIO, &(int){1}) , 0)
-	//  	return EXIT_CANNOT_CONFIGURE;
-	if (bind(server_fd, (struct sockaddr*)&server_addr, sockaddr_in_size)<0){
+	//  if (ioctl(server_fd, FIONBIO, &(int){1}) < 0)
+	//  {
+	// 	perror("ioctl error");
+	//   	return EXIT_CANNOT_CONFIGURE;
+	//  }
+	if (bind(server_fd, (struct sockaddr*)&server_addr, sockaddr_in_size)<0)
+	{
 		perror("bind error");
 		return EXIT_CANNOT_BIND;
 	}
 	if (listen(server_fd, max_clients) < 0)
+	{
+		perror("listen error");
 	 	return EXIT_CANNOT_LISTEN;
+	}
 	while (1)
 	{
 		struct sockaddr_in client_addr;
 		memset(&client_addr, 0, sockaddr_in_size);
 		client_addr.sin_family = AF_INET;
 		int client_addr_len = sizeof(client_addr);
+		printf("Waiting for next client\n");
 		int client_fd = accept(server_fd, (struct sockaddr*)&client_addr, &client_addr_len);
-		printf("Client accepted with fd = %d", client_fd);
+		printf("Client accepted with fd = %d\n", client_fd);
 		if (client_fd > 0)
 		{
 			service_client(client_fd);
