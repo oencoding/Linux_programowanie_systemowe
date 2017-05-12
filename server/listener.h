@@ -6,4 +6,6 @@
 #define EXIT_CANNOT_LISTEN 3
 #define EXIT_CANNOT_CONFIGURE 4
 
-int create_listener(int port, int max_clients);
+#define MAX_CLIENTS 0x10
+
+int create_listener(int port);

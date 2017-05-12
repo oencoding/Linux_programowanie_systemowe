@@ -12,7 +12,9 @@
 #include "listener.h"
 #include "client_worker.h"
 
-int create_listener(int port, int max_clients)
+
+
+int create_listener(int port)
 {
     struct sockaddr_in server_addr;
     socklen_t sockaddr_in_size = sizeof(struct sockaddr_in);
@@ -30,17 +32,14 @@ int create_listener(int port, int max_clients)
 		perror("setsockopt  error");
 		return EXIT_CANNOT_CONFIGURE;
 	}
-	//  if (ioctl(server_fd, FIONBIO, &(int){1}) < 0)
-	//  {
-	// 	perror("ioctl error");
-	//   	return EXIT_CANNOT_CONFIGURE;
-	//  }
+
 	if (bind(server_fd, (struct sockaddr*)&server_addr, sockaddr_in_size)<0)
 	{
 		perror("bind error");
 		return EXIT_CANNOT_BIND;
 	}
-	if (listen(server_fd, max_clients) < 0)
+
+	if (listen(server_fd, MAX_CLIENTS) < 0)
 	{
 		perror("listen error");
 	 	return EXIT_CANNOT_LISTEN;

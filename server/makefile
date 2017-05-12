@@ -1,7 +1,7 @@
 CC=gcc
-CFLAGS=-I. -w -lpthread
+CFLAGS=-I. -w -lpthread -ggdb
 DEPS = listener.h
-OBJ = main.o listener.o client_worker.o
+OBJ = main.o listener.o client_worker.o command_parser.o
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)

@@ -8,9 +8,7 @@
 #include <netinet/in.h>
 #include "listener.h"
 
-#define BUFFER_SIZE 1024
-
 int main(int argc, char* argv[])
 {
-    create_listener(1060, 5);
+    create_listener(1060);
 }
