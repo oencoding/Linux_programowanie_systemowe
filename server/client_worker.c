@@ -13,10 +13,15 @@ static void * client_worker(void *arg)
     int fd = *(int*)arg;
     ssize_t nread;
     char buffer[BUFFER_SIZE];
-    while((nread = read(fd, buffer, BUFFER_SIZE-1)) > 0)
+    while((nread = read(fd, buffer, BUFFER_SIZE)) > 0)
     {
-        buffer[nread] = 0;
-        parse_command(buffer);
+        char * response = NULL;
+        int response_length = 0;
+        if (parse_command(buffer, nread, &response, &response_length))
+        {
+            if (response != NULL)
+                write(fd, response, response_length);
+        }
     }
     if (close(fd) != 0)
         perror("close error");
