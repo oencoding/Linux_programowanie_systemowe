@@ -13,7 +13,6 @@
 #include "client_worker.h"
 
 
-
 int create_listener(int port)
 {
     struct sockaddr_in server_addr;
