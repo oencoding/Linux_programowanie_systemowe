@@ -57,7 +57,7 @@ void xml_start(void *data, const char *el, const char **attr)
     {
         if (command->type == get_details)
         {
-            if (strcmp(el, "Interface" == 0))
+            if (strcmp(el, "Interface") == 0)
                 command->xml_parse_item = add_command_item(command, el);                
         }
     } 
