@@ -1,0 +1,5 @@
+/home/stasiek/Projects/Linux_programowanie_systemowe/client/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/stasiek/Projects/Linux_programowanie_systemowe/client/bin/Debug/client.pdb
+/home/stasiek/Projects/Linux_programowanie_systemowe/client/bin/Debug/client.exe
+/home/stasiek/Projects/Linux_programowanie_systemowe/client/obj/x86/Debug/client.exe
+/home/stasiek/Projects/Linux_programowanie_systemowe/client/obj/x86/Debug/client.pdb

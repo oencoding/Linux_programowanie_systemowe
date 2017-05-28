@@ -1,0 +1,18 @@
+﻿<Properties StartupItem="client.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Client.cs">
+    <Files>
+      <File FileName="Program.cs" Line="1" Column="1" />
+      <File FileName="Client.cs" Line="21" Column="1" />
+      <File FileName="Commands/ListCommand.cs" Line="1" Column="1" />
+      <File FileName="Commands/CommandBase.cs" Line="1" Column="1" />
+      <File FileName="Helpers/SerializationHelper.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/home/stasiek/Projects/Linux_programowanie_systemowe/client/Client.cs" line="21" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

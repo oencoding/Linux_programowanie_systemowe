@@ -1,13 +1,13 @@
 CC=gcc
-CFLAGS=-I. -w -lpthread -I/usr/include/libxml2 -lxml2 -ggdb
-DEPS = listener.h
-OBJS = main.o listener.o client_worker.o command_parser.o
+CFLAGS=-I. -w -lpthread -lexpat -L../libexpat/expat/build -ggdb
+DEPS = listener.h commands/command.h
+OBJS = main.o listener.o connection_worker.o command_executor.o commands/interface_list.o
 
-#%.o: %.c $(DEPS)
-#	$(CC) -c -o $@ $< $(CFLAGS)
+# %.o: %.c $(DEPS)
+# 	$(CC) -c -o $@ $< $(CFLAGS)
 
 server: $(OBJS)
-	gcc -o $@ $^ $(CFLAGS)
+	$(CC) -o $@ $^ $(CFLAGS)
 
 #
 # Clean everything...
