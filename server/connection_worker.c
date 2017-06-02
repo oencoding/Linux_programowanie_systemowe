@@ -36,7 +36,7 @@ void * client_worker(void *arg)
     {
         perror("close error");
     }
-    printf("Client thread for %d finished . \n", fd);    
+    printf("Client thread %d finished\n", fd);    
     return NULL;
 }
 

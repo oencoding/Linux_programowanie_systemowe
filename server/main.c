@@ -7,8 +7,13 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include "listener.h"
+#include "config_reader.h"
 
 int main(int argc, char* argv[])
 {
-    create_listener(1060);
+    char * config_file = "server.config";
+    if (argc > 1)
+        config_file = argv[1];
+    SConfiguration configuration = read_configuration(config_file);
+    create_listener(&configuration);
 }

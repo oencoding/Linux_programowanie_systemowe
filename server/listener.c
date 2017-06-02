@@ -12,8 +12,7 @@
 #include "listener.h"
 #include "connection_worker.h"
 
-
-int create_listener(int port)
+int create_listener(SConfiguration* configuration)
 {
     struct sockaddr_in server_addr;
     socklen_t sockaddr_in_size = sizeof(struct sockaddr_in);
@@ -24,7 +23,7 @@ int create_listener(int port)
 	}
 	memset(&server_addr, 0, sockaddr_in_size);
 	server_addr.sin_family = AF_INET;
-	server_addr.sin_port = htons(port);
+	server_addr.sin_port = htons(configuration->Port);
 	server_addr.sin_addr.s_addr = INADDR_ANY; 
 	if (setsockopt(server_fd, SOL_SOCKET,  SO_REUSEADDR, &(int){1}, sizeof(int)) < 0 )
 	{
@@ -38,12 +37,13 @@ int create_listener(int port)
 		return EXIT_CANNOT_BIND;
 	}
 
-	if (listen(server_fd, MAX_CLIENTS) < 0)
+	if (listen(server_fd, configuration->MaxClients) < 0)
 	{
 		perror("listen error");
 	 	return EXIT_CANNOT_LISTEN;
 	}
-	while (1)
+	int client_fd = 0;
+	do
 	{
 		struct sockaddr_in client_addr;
 		memset(&client_addr, 0, sockaddr_in_size);
@@ -58,9 +58,8 @@ int create_listener(int port)
 		}
 		else
 		{
-			perror("Client accept error");
+			perror("Client accept error and program will exit");
 		}
-	}
-
+	} while (client_fd <= 0);
 	close(server_fd);
 }
