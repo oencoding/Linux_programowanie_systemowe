@@ -20,7 +20,7 @@ void * client_worker(void *arg)
         {
             if (c)
             {
-                if (c->status == valid)
+                if (valid == c->status)
                     execute_command(c);
                 char *response = prepare_response(c);
                 if (response)

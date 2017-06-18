@@ -14,10 +14,11 @@
 
 int create_listener(SConfiguration* configuration)
 {
+	printf("Listening on port %d, max clients would be %d\n", configuration->Port, configuration->MaxClients);
     struct sockaddr_in server_addr;
     socklen_t sockaddr_in_size = sizeof(struct sockaddr_in);
     int server_fd = socket(AF_INET, SOCK_STREAM, 0);
-	if (server_fd == -1){
+	if (-1 == server_fd){
 		perror("Socket create error");
 		return EXIT_SOCEKT_NOT_CREATED;
 	}
@@ -31,7 +32,7 @@ int create_listener(SConfiguration* configuration)
 		return EXIT_CANNOT_CONFIGURE;
 	}
 
-	if (bind(server_fd, (struct sockaddr*)&server_addr, sockaddr_in_size)<0)
+	if (bind(server_fd, (struct sockaddr*)&server_addr, sockaddr_in_size) < 0)
 	{
 		perror("bind error");
 		return EXIT_CANNOT_BIND;

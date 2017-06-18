@@ -5,13 +5,13 @@
 
 SConfiguration read_configuration(char * fileName)
 {
-    SConfiguration configuration = {1080, 5};
+    SConfiguration configuration = {DEFAULT_PORT, DEFAULT_MAX_CLIENTS};
     config_t config;
     config_init(&config);
     if (config_read_file(&config, fileName))
     {
         char *file_version = NULL;
-        if (config_lookup_string(&config, "version", &file_version) == CONFIG_TRUE)
+        if (CONFIG_TRUE == config_lookup_string(&config, "version", &file_version))
             printf("Reading setting file %s, version %s\n", fileName, file_version);
         config_setting_t *root_setting = config_root_setting(&config);
         if (root_setting != NULL)

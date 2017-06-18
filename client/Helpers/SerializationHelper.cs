@@ -12,7 +12,6 @@ namespace Client.Helpers
 			using (var outStream = new MemoryStream())
 			{
 				XmlWriterSettings xws = new XmlWriterSettings();
-				xws.OmitXmlDeclaration = true;
 				xws.Encoding = System.Text.Encoding.UTF8;
 				xws.Indent = true;
 				using (var xtw = XmlTextWriter.Create (outStream, xws)) {

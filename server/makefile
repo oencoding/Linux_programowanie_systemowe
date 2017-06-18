@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I. -w -lpthread -lexpat -L../libexpat/expat/build -lconfig -ggdb
+CFLAGS=-I. -w -lpthread -lmxml -lconfig -ggdb
 DEPS = listener.h commands/command.h
 OBJS = main.o listener.o connection_worker.o command_executor.o config_reader.o commands/interface_list.o
 
